@@ -2,6 +2,7 @@ ARG platform=intel
 ARG release=latest
 FROM kinetica/kinetica-${platform}:${release}
 
-COPY start_node.sh /
+COPY gpudb-docker-start.sh /opt/gpudb-docker-start.sh
 
-CMD ["/bin/sh", "/start_node.sh"]
+VOLUME ["/docker-entrypoint-initdb.d"]
+# CMD ["/bin/sh", "/start_node.sh"]
